@@ -1,0 +1,51 @@
+﻿@page
+@model Univer2.Pages.People.IndexModel
+@{
+    ViewData["Title"] = "Список пользователей";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Курс</th>
+            <th>Группа</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.People)
+        {
+            <tr>
+                <td>@person.Name</td>
+                <td>@person.SurName</td>
+                <td>@person.Course</td>
+                <td>@person.Gruop</td>
+                <td><form method="post"><input type="submit" asp-page-handler="Delete" value="Удалить" asp-route-id="@person.Id"/></form></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="POST">
+    <div>
+        <label>Имя</label>
+        <input asp-for="Person.Name" />
+    </div>
+    <div>
+        <label>Фамилия:</label>
+        <input asp-for="Person.SurName"/>
+    </div>
+    <div>
+        <label>Курс:</label>
+        <input asp-for="Person.Course" type="number" />
+    </div>
+    <div>
+        <label>Группа:</label>
+        <input asp-for="Person.Gruop" type="number" />
+    </div>
+    <input type="submit" value="Отправить" />
+</form>
+
