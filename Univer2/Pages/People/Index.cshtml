@@ -30,21 +30,26 @@
 </table>
 
 <form method="POST">
+    
     <div>
-        <label>Имя</label>
+        <label asp-for="Person.Name" class="control-label"></label>
         <input asp-for="Person.Name" />
+        <span asp-validation-for="Person.Name" class="text-danger"></span>
     </div>
     <div>
-        <label>Фамилия:</label>
-        <input asp-for="Person.SurName"/>
+        <label asp-for="Person.SurName" class="control-label"></label>
+        <input asp-for="Person.SurName" />
+        <span asp-validation-for="Person.SurName" class="text-danger"></span>
     </div>
     <div>
-        <label>Курс:</label>
+        <label asp-for="Person.Course" class="control-label"></label>
         <input asp-for="Person.Course" type="number" />
+        <span asp-validation-for="Person.Course" class="text-danger"></span>
     </div>
     <div>
-        <label>Группа:</label>
+        <label asp-for="Person.Gruop" class="control-label"></label>
         <input asp-for="Person.Gruop" type="number" />
+        <span asp-validation-for="Person.Gruop" class="text-danger"></span>
     </div>
     <input type="submit" value="Отправить" />
 </form>

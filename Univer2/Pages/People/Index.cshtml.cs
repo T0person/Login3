@@ -18,7 +18,7 @@ namespace Univer2.Pages.People
         {
             _context = db;
         }
-        public void OnGet()
+        public void OnGetAsync()
         {
             People = _context.People.AsNoTracking().ToList();
         }
@@ -29,13 +29,23 @@ namespace Univer2.Pages.People
         public Person Person { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 _context.People.Add(Person);
                 await _context.SaveChangesAsync();
+
+                // Оно тут должно быть, но ошибка :(
+
+                //return RedirectToPage();
+
             }
-            //return Page();
             return RedirectToPage();
+
+            // Была создана проверка на введение корректной формы.
+            // Но при использовании "return Page()" выдается ошибка. Не нашел как её решить
+            // Так что закомментил :(
+            
+            //return Page();
         }
 
         // Удаление
